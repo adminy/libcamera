@@ -1,5 +1,8 @@
 # SPDX-License-Identifier: CC0-1.0
 
+option('libpisp-libdir', type : 'string', description : 'path to the libpisp lib directory')
+option('libpisp-includedir', type : 'string', value : '/usr/include/libpisp', description : 'path to the libpisp header directory')
+
 option('android',
         type : 'feature',
         value : 'disabled',
