@@ -5,7 +5,14 @@ libcamera_internal_sources += files([
 ])
 
 librt = cc.find_library('rt', required : true)
-libpisp_dep = dependency('libpisp', fallback : ['libpisp', 'libpisp_dep'])
+
+pisp_libdir = get_option('libpisp-libdir')
+pisp_incdir = get_option('libpisp-includedir')
+
+pisp_inc = include_directories(pisp_incdir)
+
+libpisp = static_library('libpisp', pisp_libdir, include_directories: pisp_inc)
+libpisp_dep = declare_dependency(include_directories : pisp_inc, link_with : libpisp)
 
 libcamera_deps += [libpisp_dep, librt]
 
